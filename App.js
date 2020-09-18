@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ResumeFromScreen from './components/ResumeForm.js';
+import ResumeDetailScreen from './components/ResumeDetail.js';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -21,6 +22,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name = "resumeFrom" options={{title: "Resume From"}} component={ResumeFromScreen}></Stack.Screen>
+        <Stack.Screen name = "resumeDetail" options={{title: "Resume Detail"}} component={ResumeDetailScreen}></Stack.Screen>
         <Stack.Screen name = "homeScreen" component={homeScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

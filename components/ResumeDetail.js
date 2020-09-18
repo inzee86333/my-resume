@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 export default (props) =>{
     const [resume, serResume] = useState({
@@ -24,7 +24,7 @@ export default (props) =>{
     ]);
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Image style={styles.avatar} source={{uri: `https://movie-api.igeargeek.com/${resume.avatar}`}} />
             <View style={styles.textLine}>
                 <Text style={{fontSize: 20}}> Full Name: {resume.name}</Text>
@@ -38,7 +38,7 @@ export default (props) =>{
             <View style={styles.textLine}>
                 <Text style={{fontSize: 20}}> Skill: {resume.skill}</Text>
             </View>
-        </View>
+        </ScrollView>
     );
 }
 

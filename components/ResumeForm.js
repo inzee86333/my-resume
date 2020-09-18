@@ -1,6 +1,6 @@
 import React from 'react';
 import validationComponent from 'react-native-form-validator';
-import { ScrollView, View, StyleSheet, Text, TextInput, Button, Alert, Platform } from 'react-native';
+import { ScrollView, View, StyleSheet, Text, TextInput, Button, Platform } from 'react-native';
 import axios from 'axios';
 import Camera from './Camera';
 

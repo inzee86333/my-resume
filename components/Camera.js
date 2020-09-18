@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, StyleSheet, Text, TextInput, Button, Alert } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Button, Image } from 'react-native';
 import { Camera } from 'expo-camera';
 
 export default (props) => {
@@ -16,7 +16,7 @@ export default (props) => {
 
     const takePhoto = async () =>{
         let photo = await this.camera.takePictureAsync();
-        setPicture(photo.url)
+        setPicture(photo.uri)
         props.onTakePicture(photo.uri)
     }
 
@@ -27,7 +27,7 @@ export default (props) => {
         return <Text>No access to camera</Text>
     }
     if(picture){
-        return <Images style={styles.avatar} source={{ uri: picture }} />
+        return <Image style={styles.avatar} source={{ uri: picture }} />
     }else if(tackPictureMode){
         return (
             <View>
@@ -46,5 +46,5 @@ export default (props) => {
 
 const styles = StyleSheet.create({
     camera: { width: '100%', height: 360 },
-    avatar: {width: '100%', height: '100%'}
+    avatar: {width: '100%', height: 360}
 })

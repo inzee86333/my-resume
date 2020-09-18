@@ -1,6 +1,7 @@
 import React from 'react';
 import validationComponent from 'react-native-form-validator';
-import { View, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Button, Alert } from 'react-native';
+import axios from 'axios';
 
 
 export default class ResumeForm extends validationComponent{
@@ -12,12 +13,37 @@ export default class ResumeForm extends validationComponent{
     }
 
     _onSubmit =() =>{
-        this.validate({
+        const isValid = this.validate({
             name: { required: true },
             nickname: { required: true },
             age: { required: true, numbers: true},
             skill: { required: true }
         })
+        if (isValid){
+            const formData = new FormData();
+            formData.append('name', this.state.name)
+            formData.append('nickname', this.state.nickname)
+            formData.append('age', this.state.age)
+            formData.append('skill', this.state.skill)
+            axios.post('https://movie-api.igeargeek.com/users/register',formData,{
+                headers:{'content-type': 'multipart/from-data'}
+            }).then((response) =>{
+                Alert.alert(
+                    "Create success",
+                    'Click OK go to resume detail page',
+                    [
+                        {
+                            test: 'OK',
+                            onPress: ()=>{
+                                this.props.navigation.push('ResumeDetail', { id: response.data.id })
+                            }
+                        }
+                    ]
+                )
+            }).catch((error) =>{
+                console.log('api error', error)
+            })
+        }
     }
 
     render() {

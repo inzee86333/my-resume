@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { View, StyleSheet, Text, TextInput, Button, Alert } from 'react-native';
 import { Camera } from 'expo-camera';
 
-export default () => {
+export default (props) => {
     const [hasPermission, setHasPermission] = useState(null);
     const [tackPictureMode, setTackPictureMode] = useState(false);
     const [picture, setPicture] = useState('');
